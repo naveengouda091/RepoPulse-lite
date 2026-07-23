@@ -6,6 +6,7 @@ export {
   getTotalChanges,
   isDocumentationOnlyChange
 } from "./complexity";
+export { calculateRepositoryHealthScore } from "./health-score";
 
 export type {
   CommitComplexityAnalysis,
@@ -14,3 +15,10 @@ export type {
   ComplexityInputFile,
   ComplexityTier
 } from "./complexity";
+export type {
+  HealthScoreBreakdownItem,
+  RepositoryHealthBreakdown,
+  RepositoryHealthGrade,
+  RepositoryHealthScore,
+  RepositoryHealthScoreOptions
+} from "./health-score";
