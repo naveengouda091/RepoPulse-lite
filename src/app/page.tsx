@@ -1,18 +1,32 @@
+import { AnalyticsDashboard } from "@/components/dashboard/AnalyticsDashboard";
+import type { AnalyticsDashboardData } from "@/types/dashboard";
+
+const dashboardData: AnalyticsDashboardData = {
+  repository: {
+    name: "next.js",
+    fullName: "vercel/next.js",
+    stars: 129000,
+    forks: 28200
+  },
+  health: {
+    score: 86,
+    grade: "A"
+  },
+  tierCounts: {
+    tier1: 12,
+    tier2: 6,
+    tier3: 2
+  },
+  executiveSummary: {
+    developmentMomentum:
+      "- Active commit flow indicates steady development momentum across the latest repository sample.",
+    operationalRisks:
+      "- A small number of Tier 3 commits should be reviewed for release and regression risk.",
+    commitHygiene:
+      "- Most commits remain in lower complexity tiers, with documentation activity present in the recent sample."
+  }
+};
+
 export default function HomePage() {
-  return (
-    <main className="min-h-screen bg-background text-foreground">
-      <section className="mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-6 py-16">
-        <p className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
-          RepoPulse Lite
-        </p>
-        <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-normal text-foreground sm:text-5xl">
-          Repository intelligence for technical and executive review.
-        </h1>
-        <p className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground">
-          Analyze GitHub repository activity, complexity, and health without a
-          database or persistent application state.
-        </p>
-      </section>
-    </main>
-  );
+  return <AnalyticsDashboard data={dashboardData} />;
 }
