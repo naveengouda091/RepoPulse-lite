@@ -1,4 +1,5 @@
 import type { DashboardRepository } from "@/types/dashboard";
+import { formatCount } from "./format";
 
 type RepositoryHeaderProps = {
   repository: DashboardRepository;
@@ -23,13 +24,17 @@ export function RepositoryHeader({ repository }: RepositoryHeaderProps) {
           <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
             Stars
           </p>
-          <p className="mt-1 text-2xl font-semibold">{repository.stars}</p>
+          <p className="mt-1 text-2xl font-semibold">
+            {formatCount(repository.stars)}
+          </p>
         </div>
         <div className="rounded-lg border border-border bg-card px-4 py-3">
           <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
             Forks
           </p>
-          <p className="mt-1 text-2xl font-semibold">{repository.forks}</p>
+          <p className="mt-1 text-2xl font-semibold">
+            {formatCount(repository.forks)}
+          </p>
         </div>
       </div>
     </header>

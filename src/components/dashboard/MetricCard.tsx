@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { formatCount } from "./format";
 
 type MetricCardProps = {
   label: string;
@@ -21,7 +22,9 @@ export function MetricCard({
       )}
     >
       <p className="text-sm font-medium text-muted-foreground">{label}</p>
-      <p className="mt-3 text-3xl font-semibold tracking-normal">{value}</p>
+      <p className="mt-3 text-3xl font-semibold tracking-normal">
+        {typeof value === "number" ? formatCount(value) : value}
+      </p>
       {detail ? (
         <p className="mt-2 text-sm leading-6 text-muted-foreground">{detail}</p>
       ) : null}

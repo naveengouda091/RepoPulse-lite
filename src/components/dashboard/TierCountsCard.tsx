@@ -1,4 +1,5 @@
 import type { DashboardTierCounts } from "@/types/dashboard";
+import { formatCount } from "./format";
 
 type TierCountsCardProps = {
   tierCounts: DashboardTierCounts;
@@ -31,7 +32,7 @@ export function TierCountsCard({ tierCounts }: TierCountsCardProps) {
           <div key={tier.key} className="rounded-md bg-muted p-4">
             <p className="text-sm font-medium">{tier.label}</p>
             <p className="mt-2 text-3xl font-semibold">
-              {tierCounts[tier.key]}
+              {formatCount(tierCounts[tier.key])}
             </p>
             <p className="mt-1 text-xs text-muted-foreground">{tier.detail}</p>
           </div>

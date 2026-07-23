@@ -7,6 +7,7 @@ import { MetricCard } from "./MetricCard";
 import { RepositoryHeader } from "./RepositoryHeader";
 import { TierDistributionPieChart } from "./TierDistributionPieChart";
 import { TierCountsCard } from "./TierCountsCard";
+import { toSafeCount } from "./format";
 
 type AnalyticsDashboardProps = {
   data: AnalyticsDashboardData;
@@ -14,7 +15,9 @@ type AnalyticsDashboardProps = {
 
 export function AnalyticsDashboard({ data }: AnalyticsDashboardProps) {
   const totalTieredCommits =
-    data.tierCounts.tier1 + data.tierCounts.tier2 + data.tierCounts.tier3;
+    toSafeCount(data.tierCounts.tier1) +
+    toSafeCount(data.tierCounts.tier2) +
+    toSafeCount(data.tierCounts.tier3);
 
   return (
     <main className="min-h-screen bg-background px-6 py-8 text-foreground">

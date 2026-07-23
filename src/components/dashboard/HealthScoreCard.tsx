@@ -25,7 +25,9 @@ function getScoreColor(score: number): string {
 }
 
 export function HealthScoreCard({ health }: HealthScoreCardProps) {
-  const score = Math.min(100, Math.max(0, health.score));
+  const score = Number.isFinite(health.score)
+    ? Math.min(100, Math.max(0, health.score))
+    : 0;
 
   return (
     <section className="rounded-lg border border-border bg-card p-5 text-card-foreground shadow-sm">
