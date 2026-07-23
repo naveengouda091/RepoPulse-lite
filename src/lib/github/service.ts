@@ -130,12 +130,12 @@ export class GitHubRepositoryService {
       });
     }
 
-    const shas = commits
+    const boundedCommits = commits.slice(0, DEFAULT_COMMIT_LIMIT);
+    const shas = boundedCommits
       .map((commit) => commit.sha)
-      .filter(isNonEmptyString)
-      .slice(0, DEFAULT_COMMIT_LIMIT);
+      .filter(isNonEmptyString);
 
-    if (shas.length !== commits.length) {
+    if (shas.length !== boundedCommits.length) {
       throw new GitHubServiceError({
         code: "GITHUB_INVALID_RESPONSE",
         status: 502,

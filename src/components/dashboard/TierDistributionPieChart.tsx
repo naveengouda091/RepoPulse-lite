@@ -54,6 +54,7 @@ export function TierDistributionPieChart({
 
   return (
     <ChartCard
+      ariaLabel="Pie chart showing commit distribution across Tier 1, Tier 2, and Tier 3 complexity."
       title="Tier Distribution"
       description="Latest commit sample grouped by deterministic complexity tier."
     >

@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 type ChartCardProps = {
   title: string;
   description?: string;
+  ariaLabel?: string;
   children: ReactNode;
   className?: string;
 };
@@ -13,6 +14,7 @@ type ChartCardProps = {
 export function ChartCard({
   title,
   description,
+  ariaLabel,
   children,
   className
 }: ChartCardProps) {
@@ -31,7 +33,13 @@ export function ChartCard({
           </p>
         ) : null}
       </div>
-      <div className="mt-4 h-72 w-full">{children}</div>
+      <div
+        aria-label={ariaLabel ?? title}
+        className="mt-4 h-72 w-full"
+        role="img"
+      >
+        {children}
+      </div>
     </section>
   );
 }

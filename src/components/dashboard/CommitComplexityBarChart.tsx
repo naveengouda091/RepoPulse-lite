@@ -33,6 +33,7 @@ export function CommitComplexityBarChart({
 
   return (
     <ChartCard
+      ariaLabel="Bar chart showing total changes per recent commit."
       title="Commit Complexity"
       description="Total changes per recent commit, with file count available in the tooltip."
     >

@@ -53,6 +53,7 @@ export function HealthScoreGauge({ health }: HealthScoreGaugeProps) {
 
   return (
     <ChartCard
+      ariaLabel={`Gauge showing repository health score ${score} out of 100.`}
       title="Health Gauge"
       description="Repository health score normalized to a 100-point scale."
     >
