@@ -4,6 +4,13 @@ export type DashboardTierCounts = {
   tier3: number;
 };
 
+export type DashboardCommitComplexityPoint = {
+  label: string;
+  tier: 1 | 2 | 3;
+  totalChanges: number;
+  filesChanged: number;
+};
+
 export type DashboardExecutiveSummary = {
   developmentMomentum: string;
   operationalRisks: string;
@@ -26,5 +33,6 @@ export type AnalyticsDashboardData = {
   repository: DashboardRepository;
   health: DashboardHealth;
   tierCounts: DashboardTierCounts;
+  commitComplexity: DashboardCommitComplexityPoint[];
   executiveSummary: DashboardExecutiveSummary;
 };

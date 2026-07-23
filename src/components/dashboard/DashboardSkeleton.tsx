@@ -21,6 +21,11 @@ export function DashboardSkeleton() {
           <SkeletonBlock className="h-64" />
           <SkeletonBlock className="h-64" />
         </div>
+        <div className="grid gap-4 xl:grid-cols-3">
+          <SkeletonBlock className="h-80" />
+          <SkeletonBlock className="h-80" />
+          <SkeletonBlock className="h-80" />
+        </div>
       </div>
     </main>
   );

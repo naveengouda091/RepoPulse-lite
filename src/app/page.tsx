@@ -17,6 +17,44 @@ const dashboardData: AnalyticsDashboardData = {
     tier2: 6,
     tier3: 2
   },
+  commitComplexity: [
+    {
+      label: "c1",
+      tier: 1,
+      totalChanges: 24,
+      filesChanged: 2
+    },
+    {
+      label: "c2",
+      tier: 2,
+      totalChanges: 118,
+      filesChanged: 3
+    },
+    {
+      label: "c3",
+      tier: 1,
+      totalChanges: 36,
+      filesChanged: 1
+    },
+    {
+      label: "c4",
+      tier: 3,
+      totalChanges: 420,
+      filesChanged: 8
+    },
+    {
+      label: "c5",
+      tier: 2,
+      totalChanges: 176,
+      filesChanged: 4
+    },
+    {
+      label: "c6",
+      tier: 1,
+      totalChanges: 18,
+      filesChanged: 1
+    }
+  ],
   executiveSummary: {
     developmentMomentum:
       "- Active commit flow indicates steady development momentum across the latest repository sample.",

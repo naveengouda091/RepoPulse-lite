@@ -1,8 +1,11 @@
+import { CommitComplexityBarChart } from "./CommitComplexityBarChart";
 import type { AnalyticsDashboardData } from "@/types/dashboard";
 import { ExecutiveSummaryCard } from "./ExecutiveSummaryCard";
 import { HealthScoreCard } from "./HealthScoreCard";
+import { HealthScoreGauge } from "./HealthScoreGauge";
 import { MetricCard } from "./MetricCard";
 import { RepositoryHeader } from "./RepositoryHeader";
+import { TierDistributionPieChart } from "./TierDistributionPieChart";
 import { TierCountsCard } from "./TierCountsCard";
 
 type AnalyticsDashboardProps = {
@@ -32,6 +35,12 @@ export function AnalyticsDashboard({ data }: AnalyticsDashboardProps) {
         <section className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
           <TierCountsCard tierCounts={data.tierCounts} />
           <ExecutiveSummaryCard summary={data.executiveSummary} />
+        </section>
+
+        <section className="grid gap-4 xl:grid-cols-3">
+          <TierDistributionPieChart tierCounts={data.tierCounts} />
+          <CommitComplexityBarChart data={data.commitComplexity} />
+          <HealthScoreGauge health={data.health} />
         </section>
       </div>
     </main>
