@@ -2,6 +2,7 @@ import { GitHubServiceError } from "./errors";
 import type {
   GitHubCommitDetailResponse,
   GitHubCommitListItemResponse,
+  GitHubRepositoryResponse,
   GitHubServiceConfig
 } from "./types";
 
@@ -102,6 +103,15 @@ export class GitHubClient {
       `/repos/${encodeURIComponent(owner)}/${encodeURIComponent(
         repo
       )}/commits?per_page=${limit}`
+    );
+  }
+
+  async getRepository(
+    owner: string,
+    repo: string
+  ): Promise<GitHubRepositoryResponse> {
+    return this.request<GitHubRepositoryResponse>(
+      `/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}`
     );
   }
 

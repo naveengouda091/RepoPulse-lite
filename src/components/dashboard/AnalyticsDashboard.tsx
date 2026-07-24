@@ -20,7 +20,7 @@ export function AnalyticsDashboard({ data }: AnalyticsDashboardProps) {
     toSafeCount(data.tierCounts.tier3);
 
   return (
-    <main className="min-h-screen bg-background px-6 py-8 text-foreground">
+    <section className="bg-background px-6 py-8 text-foreground">
       <div className="mx-auto w-full max-w-7xl space-y-6">
         <RepositoryHeader repository={data.repository} />
 
@@ -46,6 +46,6 @@ export function AnalyticsDashboard({ data }: AnalyticsDashboardProps) {
           <HealthScoreGauge health={data.health} />
         </section>
       </div>
-    </main>
+    </section>
   );
 }

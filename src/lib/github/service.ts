@@ -5,6 +5,7 @@ import type {
   GitHubServiceConfig,
   RepositoryCommitDetails,
   RepositoryCommitFile,
+  RepositoryMetadata,
   RepositoryRef
 } from "./types";
 
@@ -34,6 +35,29 @@ function assertRepositoryRef({ owner, repo }: RepositoryRef): void {
       message: "Repository name is required."
     });
   }
+}
+
+function normalizeRepositoryMetadata(
+  repository: Awaited<ReturnType<GitHubClient["getRepository"]>>,
+  fallback: RepositoryRef
+): RepositoryMetadata {
+  const owner = isNonEmptyString(repository.owner?.login)
+    ? repository.owner.login
+    : fallback.owner;
+  const name = isNonEmptyString(repository.name)
+    ? repository.name
+    : fallback.repo;
+  const fullName = isNonEmptyString(repository.full_name)
+    ? repository.full_name
+    : `${owner}/${name}`;
+
+  return {
+    owner,
+    name,
+    fullName,
+    stars: asNumber(repository.stargazers_count),
+    forks: asNumber(repository.forks_count)
+  };
 }
 
 function normalizeCommitFile(
@@ -110,6 +134,16 @@ export class GitHubRepositoryService {
     this.client = new GitHubClient(config);
   }
 
+  async getRepositoryMetadata({
+    owner,
+    repo
+  }: RepositoryRef): Promise<RepositoryMetadata> {
+    assertRepositoryRef({ owner, repo });
+
+    const repository = await this.client.getRepository(owner, repo);
+    return normalizeRepositoryMetadata(repository, { owner, repo });
+  }
+
   async getLatestCommitDetails({
     owner,
     repo
@@ -157,4 +191,12 @@ export async function fetchLatestRepositoryCommitDetails(
 ): Promise<RepositoryCommitDetails[]> {
   const service = new GitHubRepositoryService(config);
   return service.getLatestCommitDetails(repository);
+}
+
+export async function fetchRepositoryMetadata(
+  repository: RepositoryRef,
+  config: GitHubServiceConfig = {}
+): Promise<RepositoryMetadata> {
+  const service = new GitHubRepositoryService(config);
+  return service.getRepositoryMetadata(repository);
 }

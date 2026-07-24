@@ -18,6 +18,24 @@ export type RepositoryRef = {
   repo: string;
 };
 
+export type RepositoryMetadata = {
+  owner: string;
+  name: string;
+  fullName: string;
+  stars: number;
+  forks: number;
+};
+
+export type GitHubRepositoryResponse = {
+  name?: unknown;
+  full_name?: unknown;
+  stargazers_count?: unknown;
+  forks_count?: unknown;
+  owner?: {
+    login?: unknown;
+  } | null;
+};
+
 export type RepositoryCommitSummary = {
   sha: string;
 };
